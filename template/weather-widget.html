@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<section class="vh-100">
+    <div class="container py-0 h-100">
+
+        <div class="row d-flex justify-content-center h-100" style="color: #282828;">
+            <div class="col-md-9 col-lg-7 col-xl-5">
+                <div class="card mb-4 gradient-custom" style="border-radius: 25px; background-color:gray">
+                    <div class="card-body p-4">
+                        <div id="demo1" data-mdb-carousel-init class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ul class="carousel-indicators mb-0">
+                                <li data-target="#demo1" data-slide-to="0" class="active"></li>
+                                <li data-target="#demo1" data-slide-to="1"></li>
+                                <li data-target="#demo1" data-slide-to="2"></li>
+                            </ul>
+                            <!-- Carousel inner -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="text-muted mb-0">{{ city }}, {{ country }}</p>
+                                            <h2 class="display-2"><strong><i class="fa fa-thermometer-2"
+                                                        aria-hidden="true"></i>&nbsp;{{ temperature }}°C</strong></h2>
+                                            <p class="text-muted mb-1">
+                                                <i class="fa fa-thermometer-0" aria-hidden="true"></i>&nbsp;Min: {{
+                                                temp_min }}
+                                                &nbsp;&nbsp;&nbsp;
+                                                <i class="fa fa-thermometer-4" aria-hidden="true"></i>&nbsp;Max: {{
+                                                temp_max }}
+                                            </p>
+                                            <p class="text-muted mb-1">Pressure: {{ pressure }}hPa</p>
+                                            <p class="text-muted mb-1">Humidity: {{ humidity }}%</p>
+                                            <p>
+                                                <i class="fa fa-sun-o" aria-hidden="true"></i> {{ sunrise }}&nbsp;
+                                                <i class="fa fa-moon-o" aria-hidden="true"></i> {{ sunset }}
+                                            </p>
+
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="text-muted mb-0">{{ weather_desc }}</p>
+                                            <img src="https://openweathermap.org/img/wn/{{ weather_icon }}@2x.png"
+                                                width="100px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- <section class="vh-100" style="background-color: #f5f6f7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <div class="card bg-dark text-white" style="border-radius: 40px;">
+                    <div class="bg-image" style="border-radius: 35px;">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw1.webp"
+                            class="card-img" alt="weather" />
+                        <div class="mask" style="background-color: rgba(190, 216, 232, .5);"></div>
+                    </div>
+                    <div class="card-img-overlay text-dark p-5">
+                        <h4 class="mb-0">{{ title }}Juneau, Alaska, US</h4>
+                        <p class="display-2 my-3">1.28°C</p>
+                        <p class="mb-2">Feels Like: <strong>-1.08 °C</strong></p>
+                        <h5>Snowy</h5>
+                        <ul></ul>
+                        {% for item in items %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section> -->
