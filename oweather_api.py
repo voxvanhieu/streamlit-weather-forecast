@@ -11,7 +11,7 @@ APP_CONFIG  =  {
     'URL_GEOCODE_LOCATION': os.environ.get('URL_GEOCODE_LOCATION'),
 }
 
-def  get_geocode_location_info(lat : str, lon: str):
+def get_geocode_location_info(lat : str, lon: str):
     template = Template(APP_CONFIG['URL_GEOCODE_LOCATION'])
     url = template.substitute(
         lat=lat,
@@ -23,7 +23,6 @@ def  get_geocode_location_info(lat : str, lon: str):
         raise Exception("API error")
     
     return json.loads(response.text)
-
 
 def get_current_forecast(lat : str, lon: str):
     template = Template(APP_CONFIG['URL_WEATHER_CURRENT'])

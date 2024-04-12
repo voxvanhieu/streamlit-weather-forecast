@@ -50,7 +50,7 @@ def initialize_map(center, zoom):
     m = folium.Map(location=center, zoom_start=zoom, scrollWheelZoom=False)
     folium.LatLngPopup().add_to(m)
     LocateControl().add_to(m)
-    Geocoder(add_marker=True, collapsed=True, zoom=11).add_to(m)
+    Geocoder(add_marker=True, collapsed=False, zoom=11).add_to(m)
     MeasureControl(position='bottomleft', primary_length_unit='kilometers',
                    secondary_length_unit='meters', primary_area_unit='sqkilometers', secondary_area_unit='sqmeters').add_to(m)
     return m
