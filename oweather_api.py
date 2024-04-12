@@ -2,6 +2,7 @@ import os
 import requests
 import json
 from string import Template
+import datetime
 
 APP_CONFIG  =  {
     'API_KEY' : os.environ.get('API_KEY'),
@@ -49,3 +50,17 @@ def get_5_days_forecast(lat : str, lon: str):
         raise Exception("API error")
     
     return json.loads(response.text)
+
+def get_temperatures_date(data):
+    temperatures = []
+    daily_dates = []
+    pressure = []
+    humidity = []
+
+    for item in data['list']:
+        temperatures.append(item['main']['temp_max'])
+        pressure.append(item['main']['pressure'])
+        humidity.append(item['main']['humidity'])
+        daily_dates.append(item['dt_txt'])
+
+    return temperatures, daily_dates, pressure, humidity

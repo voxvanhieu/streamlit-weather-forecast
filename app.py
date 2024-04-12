@@ -4,6 +4,7 @@ import folium
 import streamlit as st
 from streamlit_folium import st_folium
 from folium.plugins import Geocoder, MeasureControl, LocateControl
+import plotly.express as px
 
 # My lib
 import oweather_api as wapi
@@ -120,6 +121,18 @@ with st.container():
         
         if 'weather_data' in st.session_state and len(st.session_state['weather_data']) > 0:
             wwidget.draw_weather_forecast(st.session_state['weather_data'])
+            
+            center = st.session_state['map_data']['center']
+            forecast_data = wapi.get_5_days_forecast(lat=center['lat'], lon=center['lng'])
+            daily_temps, daily_dates, pressure, humidity = wapi.get_temperatures_date(forecast_data)
+
+            fig_temps = px.line(x=daily_dates, y=daily_temps, title='5-Day Temperature', labels={"x": "Date", "y": "Temperature (°C)"})
+            fig_pressure = px.line(x=daily_dates, y=pressure, title='5-Day Pressure', labels={"x": "Date", "y": "Pressure (Mpa)"})
+            fig_humidity = px.bar(x=daily_dates, y=humidity, title='5-Day Humidity', labels={"x": "Date", "y": "Humidity (g/m³)"})
+            
+            st.plotly_chart(fig_temps, use_container_width=True)
+            st.plotly_chart(fig_pressure, use_container_width=True)
+            st.plotly_chart(fig_humidity, use_container_width=True)
     
     st.write("## session_state")
     st.write(st.session_state)
