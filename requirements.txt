@@ -1,6 +1,7 @@
 
-requrests
 folium
 streamlit
 streamlit_folium
 streamlit_observable
+plotly
+plotly.express

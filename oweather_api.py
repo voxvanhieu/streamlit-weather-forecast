@@ -52,7 +52,7 @@ def get_5_days_forecast(lat : str, lon: str, cnt: int):
     
     return json.loads(response.text)
 
-def get_temperatures_date(data):
+def exact_weather_data(data):
     temperatures = []
     daily_dates = []
     pressure = []
