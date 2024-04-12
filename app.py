@@ -13,7 +13,7 @@ import weather_widget as wwidget
 DEFAULT_LATITUDE = 16.0544
 DEFAULT_LONGITUDE = 108.2022
 CENTER_START = [DEFAULT_LATITUDE, DEFAULT_LONGITUDE]
-ZOOM_START = 6
+ZOOM_START = 5
 
 st.set_page_config(
     page_title="Python Weather Forecast", 
@@ -70,7 +70,8 @@ with st.container():
             try:
                 center = st.session_state['map_data']['center']
                 st.session_state['weather_data']['current'] = wapi.get_current_forecast(lat=center['lat'], lon=center['lng'])
-                st.session_state['weather_data']['future'] = wapi.get_5_days_forecast(lat=center['lat'], lon=center['lng'])
+                st.session_state['weather_data']['future'] = wapi.get_5_days_forecast(lat=center['lat'], lon=center['lng'], cnt=40)
+                # st.session_state['weather_data']['next5days'] = wapi.get_5_days_forecast(lat=center['lat'], lon=center['lng'], cnt=5)
                 st.session_state['weather_data']['location'] = wapi.get_geocode_location_info(lat=center['lat'], lon=center['lng'])
             except Exception as e:
                 st.warning(e)
@@ -108,7 +109,7 @@ with st.container():
             feature_group_to_add=fg,
             key="new",
             width=1285,
-            height=725,
+            height=525,
             # returned_objects=["all_drawings"],
             use_container_width=True
         )

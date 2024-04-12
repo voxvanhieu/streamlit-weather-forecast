@@ -10,7 +10,8 @@
 
         <div class="row d-flex justify-content-center h-100" style="color: #282828;">
             <div class="col-md-9 col-lg-7 col-xl-5">
-                <div class="card mb-4 gradient-custom" style="border-radius: 25px; background-color:gray">
+
+                <div class="card mb-4 gradient-custom" style="border-radius: 25px;">
                     <div class="card-body p-4">
                         <div id="demo1" data-mdb-carousel-init class="carousel slide" data-ride="carousel">
                             <!-- Indicators -->
@@ -47,6 +48,39 @@
                                             <img src="https://openweathermap.org/img/wn/{{ weather_icon }}@2x.png"
                                                 width="100px">
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card" style="border-radius: 25px;">
+                    <div class="card-body p-4">
+
+                        <div id="demo3" data-mdb-carousel-init class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ul class="carousel-indicators mb-0">
+                                <li data-target="#demo3" data-slide-to="0"></li>
+                                <li data-target="#demo3" data-slide-to="1"></li>
+                                <li data-target="#demo3" data-slide-to="2" class="active"></li>
+                            </ul>
+                            <!-- Carousel inner -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="d-flex justify-content-around text-center mb-4 pb-3 pt-2">
+                                        {%- for day in next5days %}
+
+                                        <div class="flex-column">
+                                            <p class="small"><strong>{{ day['main']['temp'] -}}°C</strong></p>
+                                            <img src="https://openweathermap.org/img/wn/{{ day['weather'][0]['icon'] -}}@2x.png"
+                                                width="80px">
+                                            <!-- <i class="fa fa-sun-o fa-2x mb-3" style="color: #ddd;"></i> -->
+                                            <p class="mb-0"><strong>{{ day['weekday'] -}}</strong></p>
+                                        </div>
+
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>

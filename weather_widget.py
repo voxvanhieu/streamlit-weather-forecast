@@ -30,6 +30,15 @@ def draw_weather_forecast(forecast_data: dict):
     sunset = int(current['sys']['sunset'])
     sunset = add_second_to_unix_time(sunset, 0)
     
+    next5days = []
+    for index in range(6, len(future['list']), 8):
+        next5days.append(future['list'][index])
+    
+    weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    
+    for day in next5days:
+        day['weekday'] = weekdays[datetime.fromtimestamp(day['dt']).weekday()]
+    
     # Load the Jinja2 template
     with open("template/weather-widget.html", "r") as template_file:
         template_content = template_file.read()
@@ -47,7 +56,8 @@ def draw_weather_forecast(forecast_data: dict):
                                     sunrise=sunrise,
                                     sunset=sunset,
                                     weather_icon=icon,
-                                    weather_desc=description)
+                                    weather_desc=description,
+                                    next5days=next5days)
 
     # Display the HTML in Streamlit app
-    components.html(rendered_html, height=500, scrolling=False)
+    components.html(rendered_html, height=550, scrolling=False)

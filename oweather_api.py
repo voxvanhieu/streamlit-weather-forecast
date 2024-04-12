@@ -24,7 +24,7 @@ def  get_geocode_location_info(lat : str, lon: str):
     return json.loads(response.text)
 
 
-def  get_current_forecast(lat : str, lon: str):
+def get_current_forecast(lat : str, lon: str):
     template = Template(APP_CONFIG['URL_WEATHER_CURRENT'])
     url = template.substitute(
         lat=lat,
@@ -37,12 +37,13 @@ def  get_current_forecast(lat : str, lon: str):
     
     return json.loads(response.text)
 
-def get_5_days_forecast(lat : str, lon: str):
+def get_5_days_forecast(lat : str, lon: str, cnt: int):
     template = Template(APP_CONFIG['URL_WEATHER_5_DAYS'])
     url = template.substitute(
         lat=lat,
         lon=lon,
-        appid=APP_CONFIG['API_KEY'])
+        appid=APP_CONFIG['API_KEY'],
+        cnt=cnt)
     
     response = requests.get(url=url)
     if response.status_code != 200:
