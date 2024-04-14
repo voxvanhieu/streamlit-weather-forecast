@@ -134,7 +134,9 @@ with st.container():
         st.plotly_chart(fig_temps, use_container_width=True)
         st.plotly_chart(fig_pressure, use_container_width=True)
         st.plotly_chart(fig_humidity, use_container_width=True)
+        
+        # Debug 
+        st.write("## session_state")
+        st.write(st.session_state)
     
-    st.write("## session_state")
-    st.write(st.session_state)
         
